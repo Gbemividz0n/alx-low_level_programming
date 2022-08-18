@@ -1,21 +1,26 @@
 #!/usr/bin/python3
+""" Module that contains the island_perimeter function """
 
 
 def island_perimeter(grid):
-    """
-    This function calculated the perimeter
-    of a grid
-    """
-    pm = 0
-    for x in range(len(grid)):
-        for y in range(len(grid[x])):
-            if grid[x][y] == 1:
-                if x == 0 or grid[x - 1][y] == 0:
-                    pm += 1
-                if y == 0 or grid[x][y - 1] == 0:
-                    pm += 1
-                if x == len(grid) - 1 or grid[x + 1][y] == 0:
-                    pm += 1
-                if y == len(grid[x]) - 1 or grid[x][y + 1] == 0:
-                    pm += 1
-    return (pm)
+    """ Function that returns the perimeter of island described in grid """
+    perimeter = 0
+
+    nrows = len(grid)
+
+    if grid != []:
+        ncolumns = len(grid[0])
+
+    for a in range(nrows):
+        for b in range(ncolumns):
+            if grid[a][b] == 1:
+                if (a - 1) == -1 or grid[a - 1][b] == 0:
+                    perimeter += 1
+                if (a + 1) == nrows or grid[a + 1][b] == 0:
+                    perimeter += 1
+                if (b - 1) == -1 or grid[a][b - 1] == 0:
+                    perimeter += 1
+                if (b + 1) == ncolumns or grid[a][b + 1] == 0:
+                    perimeter += 1
+
+    return perimeter
